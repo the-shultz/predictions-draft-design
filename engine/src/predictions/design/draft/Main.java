@@ -1,6 +1,7 @@
 package predictions.design.draft;
 
 import predictions.design.draft.action.impl.IncreaseAction;
+import predictions.design.draft.action.impl.KillAction;
 import predictions.design.draft.definition.entity.EntityDefinition;
 import predictions.design.draft.definition.entity.EntityDefinitionImpl;
 import predictions.design.draft.instance.environment.api.ActiveEnvironment;
@@ -31,6 +32,7 @@ public class Main {
         Rule rule1 = new RuleImpl("rule 1");
         rule1.addAction(new IncreaseAction(smokerEntityDefinition, "age", "1"));
         rule1.addAction(new IncreaseAction(smokerEntityDefinition, "smokingInDay", "3"));
+        rule1.addAction(new KillAction(smokerEntityDefinition));
 
         EnvVariablesManager envVariablesManager = new EnvVariableManagerImpl();
         IntegerPropertyDefinition taxAmountEnvironmentVariablePropertyDefinition = new IntegerPropertyDefinition("tax-amount", ValueGeneratorFactory.createRandomInteger(10, 100));
@@ -74,7 +76,7 @@ public class Main {
             rule1
                     .getActionsToPerform()
                     .forEach(action ->
-                            action.invoke(entityInstance, activeEnvironment));
+                            action.invoke(entityInstance, activeEnvironment, entityInstanceManager));
         }
     }
 

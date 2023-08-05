@@ -3,6 +3,7 @@ package predictions.design.draft.action.impl;
 import predictions.design.draft.action.api.AbstractAction;
 import predictions.design.draft.action.api.ActionType;
 import predictions.design.draft.definition.entity.EntityDefinition;
+import predictions.design.draft.instance.enitty.manager.EntityInstanceManager;
 import predictions.design.draft.instance.environment.api.ActiveEnvironment;
 import predictions.design.draft.definition.property.api.PropertyType;
 import predictions.design.draft.instance.enitty.EntityInstance;
@@ -20,7 +21,7 @@ public class IncreaseAction extends AbstractAction {
     }
 
     @Override
-    public void invoke(EntityInstance entityInstance, ActiveEnvironment activeEnvironment) {
+    public void invoke(EntityInstance entityInstance, ActiveEnvironment activeEnvironment, EntityInstanceManager entityInstanceManager) {
         PropertyInstance propertyInstance = entityInstance.getPropertyByName(property);
         if (!verifyNumericPropertyTYpe(propertyInstance)) {
             throw new IllegalArgumentException("increase action can't operate on a none number property [" + property);

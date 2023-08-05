@@ -10,4 +10,5 @@ public interface EntityInstanceManager {
     EntityInstance create(EntityDefinition entityDefinition);
     List<EntityInstance> getInstances();
 
+    void killEntity(int id);
 }

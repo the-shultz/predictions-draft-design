@@ -40,4 +40,9 @@ public class EntityInstanceManagerImpl implements EntityInstanceManager {
     public List<EntityInstance> getInstances() {
         return instances;
     }
+
+    @Override
+    public void killEntity(int id) {
+        // some implementation...
+    }
 }
