@@ -4,6 +4,8 @@ import predictions.design.draft.definition.entity.EntityDefinition;
 import predictions.design.draft.definition.entity.EntityDefinitionImpl;
 import predictions.design.draft.definition.property.impl.IntegerPropertyDefinition;
 import predictions.design.draft.definition.value.generator.api.ValueGeneratorFactory;
+import predictions.design.draft.instance.enitty.manager.EntityInstanceManager;
+import predictions.design.draft.instance.enitty.manager.EntityInstanceManagerImpl;
 
 public class Main {
 
@@ -16,6 +18,14 @@ public class Main {
         smokerEntityDefinition.getProps().add(agePropertyDefinition);
         smokerEntityDefinition.getProps().add(smokingInDayPropertyDefinition);
 
+
+        // creating entity instance manager
+        EntityInstanceManager entityInstanceManager = new EntityInstanceManagerImpl();
+
+        // create 3 instance of the smokerEntityDefinition smoker
+        for (int i = 0; i < smokerEntityDefinition.getPopulation(); i++) {
+            entityInstanceManager.create(smokerEntityDefinition);
+        }
     }
 
 
