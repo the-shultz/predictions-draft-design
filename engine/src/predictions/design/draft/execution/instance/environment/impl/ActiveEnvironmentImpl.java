@@ -1,7 +1,7 @@
-package predictions.design.draft.instance.environment.impl;
+package predictions.design.draft.execution.instance.environment.impl;
 
-import predictions.design.draft.instance.environment.api.ActiveEnvironment;
-import predictions.design.draft.instance.property.PropertyInstance;
+import predictions.design.draft.execution.instance.environment.api.ActiveEnvironment;
+import predictions.design.draft.execution.instance.property.PropertyInstance;
 
 import java.util.HashMap;
 import java.util.Map;

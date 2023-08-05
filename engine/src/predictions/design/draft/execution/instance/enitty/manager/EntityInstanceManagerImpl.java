@@ -1,11 +1,11 @@
-package predictions.design.draft.instance.enitty.manager;
+package predictions.design.draft.execution.instance.enitty.manager;
 
 import predictions.design.draft.definition.entity.EntityDefinition;
 import predictions.design.draft.definition.property.api.PropertyDefinition;
-import predictions.design.draft.instance.enitty.EntityInstance;
-import predictions.design.draft.instance.enitty.EntityInstanceImpl;
-import predictions.design.draft.instance.property.PropertyInstance;
-import predictions.design.draft.instance.property.PropertyInstanceImpl;
+import predictions.design.draft.execution.instance.enitty.EntityInstance;
+import predictions.design.draft.execution.instance.enitty.EntityInstanceImpl;
+import predictions.design.draft.execution.instance.property.PropertyInstance;
+import predictions.design.draft.execution.instance.property.PropertyInstanceImpl;
 
 import java.util.ArrayList;
 import java.util.List;

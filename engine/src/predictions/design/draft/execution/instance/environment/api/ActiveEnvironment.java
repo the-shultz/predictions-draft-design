@@ -1,6 +1,6 @@
-package predictions.design.draft.instance.environment.api;
+package predictions.design.draft.execution.instance.environment.api;
 
-import predictions.design.draft.instance.property.PropertyInstance;
+import predictions.design.draft.execution.instance.property.PropertyInstance;
 
 public interface ActiveEnvironment {
     PropertyInstance getProperty(String name);

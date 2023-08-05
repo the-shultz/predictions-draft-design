@@ -1,7 +1,7 @@
-package predictions.design.draft.instance.enitty;
+package predictions.design.draft.execution.instance.enitty;
 
 import predictions.design.draft.definition.entity.EntityDefinition;
-import predictions.design.draft.instance.property.PropertyInstance;
+import predictions.design.draft.execution.instance.property.PropertyInstance;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package predictions.design.draft.instance.property;
+package predictions.design.draft.execution.instance.property;
 
 import predictions.design.draft.definition.property.api.PropertyDefinition;
 

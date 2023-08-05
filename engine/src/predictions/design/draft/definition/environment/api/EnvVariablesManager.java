@@ -1,7 +1,7 @@
 package predictions.design.draft.definition.environment.api;
 
 import predictions.design.draft.definition.property.api.PropertyDefinition;
-import predictions.design.draft.instance.environment.api.ActiveEnvironment;
+import predictions.design.draft.execution.instance.environment.api.ActiveEnvironment;
 
 import java.util.Collection;
 

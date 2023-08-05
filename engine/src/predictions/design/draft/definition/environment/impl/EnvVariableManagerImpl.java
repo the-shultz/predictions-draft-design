@@ -1,9 +1,9 @@
 package predictions.design.draft.definition.environment.impl;
 
-import predictions.design.draft.instance.environment.api.ActiveEnvironment;
+import predictions.design.draft.execution.instance.environment.api.ActiveEnvironment;
 import predictions.design.draft.definition.environment.api.EnvVariablesManager;
 import predictions.design.draft.definition.property.api.PropertyDefinition;
-import predictions.design.draft.instance.environment.impl.ActiveEnvironmentImpl;
+import predictions.design.draft.execution.instance.environment.impl.ActiveEnvironmentImpl;
 
 import java.util.Collection;
 import java.util.HashMap;
