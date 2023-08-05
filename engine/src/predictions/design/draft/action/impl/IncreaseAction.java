@@ -3,6 +3,7 @@ package predictions.design.draft.action.impl;
 import predictions.design.draft.action.api.AbstractAction;
 import predictions.design.draft.action.api.ActionType;
 import predictions.design.draft.definition.entity.EntityDefinition;
+import predictions.design.draft.instance.environment.api.ActiveEnvironment;
 import predictions.design.draft.definition.property.api.PropertyType;
 import predictions.design.draft.instance.enitty.EntityInstance;
 import predictions.design.draft.instance.property.PropertyInstance;
@@ -19,7 +20,7 @@ public class IncreaseAction extends AbstractAction {
     }
 
     @Override
-    public void invoke(EntityInstance entityInstance) {
+    public void invoke(EntityInstance entityInstance, ActiveEnvironment activeEnvironment) {
         PropertyInstance propertyInstance = entityInstance.getPropertyByName(property);
         if (!verifyNumericPropertyTYpe(propertyInstance)) {
             throw new IllegalArgumentException("increase action can't operate on a none number property [" + property);
@@ -28,6 +29,8 @@ public class IncreaseAction extends AbstractAction {
         Integer v = PropertyType.DECIMAL.convert(propertyInstance.getValue());
 
         // something that evaluates expression to a number, say the result is 5...
+        // now you can also access the environment variables through the active environment...
+        // PropertyInstance blaPropertyInstance = activeEnvironment.getProperty("bla");
         int x = 5;
 
         // actual calculation

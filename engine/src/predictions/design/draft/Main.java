@@ -3,11 +3,15 @@ package predictions.design.draft;
 import predictions.design.draft.action.impl.IncreaseAction;
 import predictions.design.draft.definition.entity.EntityDefinition;
 import predictions.design.draft.definition.entity.EntityDefinitionImpl;
+import predictions.design.draft.instance.environment.api.ActiveEnvironment;
+import predictions.design.draft.definition.environment.api.EnvVariablesManager;
+import predictions.design.draft.definition.environment.impl.EnvVariableManagerImpl;
 import predictions.design.draft.definition.property.impl.IntegerPropertyDefinition;
 import predictions.design.draft.definition.value.generator.api.ValueGeneratorFactory;
 import predictions.design.draft.instance.enitty.EntityInstance;
 import predictions.design.draft.instance.enitty.manager.EntityInstanceManager;
 import predictions.design.draft.instance.enitty.manager.EntityInstanceManagerImpl;
+import predictions.design.draft.instance.property.PropertyInstanceImpl;
 import predictions.design.draft.rule.Rule;
 import predictions.design.draft.rule.RuleImpl;
 
@@ -28,7 +32,16 @@ public class Main {
         rule1.addAction(new IncreaseAction(smokerEntityDefinition, "age", "1"));
         rule1.addAction(new IncreaseAction(smokerEntityDefinition, "smokingInDay", "3"));
 
+        EnvVariablesManager envVariablesManager = new EnvVariableManagerImpl();
+        IntegerPropertyDefinition taxAmountEnvironmentVariablePropertyDefinition = new IntegerPropertyDefinition("tax-amount", ValueGeneratorFactory.createRandomInteger(10, 100));
+        envVariablesManager.addEnvironmentVariable(taxAmountEnvironmentVariablePropertyDefinition);
+
+
+
+
         // execution phase - happens upon command 3
+
+        // initialization phase
 
         // creating entity instance manager
         EntityInstanceManager entityInstanceManager = new EntityInstanceManagerImpl();
@@ -38,6 +51,22 @@ public class Main {
             entityInstanceManager.create(smokerEntityDefinition);
         }
 
+        // create env variable instance
+        ActiveEnvironment activeEnvironment = envVariablesManager.createActiveEnvironment();
+        // all available environment variable with their definition
+//        for (PropertyDefinition propertyDefinition : envVariablesManager.getEnvVariables()) {
+
+            // collect value from user...
+            int valueFromUser = 54;
+            activeEnvironment.addPropertyInstance(new PropertyInstanceImpl(taxAmountEnvironmentVariablePropertyDefinition, valueFromUser));
+//        }
+
+        // all env variable not inserted by user, needs to be generated randomly. lucky we have all data needed for it...
+        //Integer randomEnvVariableValue = taxAmountEnvironmentVariablePropertyDefinition.generateValue();
+        //activeEnvironment.addPropertyInstance(new PropertyInstanceImpl(taxAmountEnvironmentVariablePropertyDefinition, randomEnvVariableValue));
+
+        // during a tick...
+
         // given an instance...
         EntityInstance entityInstance = entityInstanceManager.getInstances().get(0);
 
@@ -45,7 +74,7 @@ public class Main {
             rule1
                     .getActionsToPerform()
                     .forEach(action ->
-                            action.invoke(entityInstance));
+                            action.invoke(entityInstance, activeEnvironment));
         }
     }
 
