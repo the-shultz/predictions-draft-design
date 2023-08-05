@@ -4,6 +4,8 @@ import predictions.design.draft.action.impl.IncreaseAction;
 import predictions.design.draft.action.impl.KillAction;
 import predictions.design.draft.definition.entity.EntityDefinition;
 import predictions.design.draft.definition.entity.EntityDefinitionImpl;
+import predictions.design.draft.execution.context.Context;
+import predictions.design.draft.execution.context.ContextImpl;
 import predictions.design.draft.execution.instance.environment.api.ActiveEnvironment;
 import predictions.design.draft.definition.environment.api.EnvVariablesManager;
 import predictions.design.draft.definition.environment.impl.EnvVariableManagerImpl;
@@ -71,12 +73,13 @@ public class Main {
 
         // given an instance...
         EntityInstance entityInstance = entityInstanceManager.getInstances().get(0);
-
+        // create a context (per instance)
+        Context context = new ContextImpl(entityInstance, entityInstanceManager, activeEnvironment);
         if (rule1.getActivation().isActive(1)) {
             rule1
                     .getActionsToPerform()
                     .forEach(action ->
-                            action.invoke(entityInstance, activeEnvironment, entityInstanceManager));
+                            action.invoke(context));
         }
     }
 

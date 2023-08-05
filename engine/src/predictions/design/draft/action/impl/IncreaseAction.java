@@ -3,10 +3,8 @@ package predictions.design.draft.action.impl;
 import predictions.design.draft.action.api.AbstractAction;
 import predictions.design.draft.action.api.ActionType;
 import predictions.design.draft.definition.entity.EntityDefinition;
-import predictions.design.draft.execution.instance.enitty.manager.EntityInstanceManager;
-import predictions.design.draft.execution.instance.environment.api.ActiveEnvironment;
 import predictions.design.draft.definition.property.api.PropertyType;
-import predictions.design.draft.execution.instance.enitty.EntityInstance;
+import predictions.design.draft.execution.context.Context;
 import predictions.design.draft.execution.instance.property.PropertyInstance;
 
 public class IncreaseAction extends AbstractAction {
@@ -21,8 +19,8 @@ public class IncreaseAction extends AbstractAction {
     }
 
     @Override
-    public void invoke(EntityInstance entityInstance, ActiveEnvironment activeEnvironment, EntityInstanceManager entityInstanceManager) {
-        PropertyInstance propertyInstance = entityInstance.getPropertyByName(property);
+    public void invoke(Context context) {
+        PropertyInstance propertyInstance = context.getPrimaryEntityInstance().getPropertyByName(property);
         if (!verifyNumericPropertyTYpe(propertyInstance)) {
             throw new IllegalArgumentException("increase action can't operate on a none number property [" + property);
         }

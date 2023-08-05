@@ -3,9 +3,7 @@ package predictions.design.draft.action.impl;
 import predictions.design.draft.action.api.AbstractAction;
 import predictions.design.draft.action.api.ActionType;
 import predictions.design.draft.definition.entity.EntityDefinition;
-import predictions.design.draft.execution.instance.enitty.EntityInstance;
-import predictions.design.draft.execution.instance.enitty.manager.EntityInstanceManager;
-import predictions.design.draft.execution.instance.environment.api.ActiveEnvironment;
+import predictions.design.draft.execution.context.Context;
 
 public class KillAction extends AbstractAction {
 
@@ -14,8 +12,8 @@ public class KillAction extends AbstractAction {
     }
 
     @Override
-    public void invoke(EntityInstance entityInstance, ActiveEnvironment activeEnvironment, EntityInstanceManager entityInstanceManager) {
-        entityInstanceManager.killEntity(entityInstance.getId());
+    public void invoke(Context context) {
+        context.removeEntity(context.getPrimaryEntityInstance());
     }
 
 }
